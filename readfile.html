@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Read File (via User Input selection)</title>
+    <script>
+	// This script takes a file from a user input dialogue and spits out the results
+	// 20130528 - Morten Albring 
+	var reader; 
+	reader = new FileReader();
+
+	function readText(filePath) {
+	var output = ""; 
+        if(filePath.files && filePath.files[0]) {           
+            reader.onload = function (e) {
+                output = e.target.result;
+                displayContents(output);
+            };
+            reader.readAsText(filePath.files[0]);
+        }
+        return true;
+    }   
+
+    function displayContents(txt) {
+		var txt_lines = txt.split('\n');
+		var number_of_lines = txt_lines.length;
+		
+		var firstCol = new Array();
+		var secondCol = new Array();
+		for (var i=0;i<number_of_lines;i++) {
+		// This is the specific formatting of my data to split the line into columns
+		firstCol[i] = parseFloat(txt_lines[i].substring(0,25));
+		secondCol[i] = parseFloat(txt_lines[i].substring(28,44));		
+		}
+		
+        var el = document.getElementById('main'); 
+        el.innerHTML = firstCol; 
+    }   
+	</script>
+
+</head>
+<body>
+    <div id="container">    
+        <input type="file" onchange='readText(this)' />
+        <br/>
+        <hr/>   
+        <h3>Contents of the Text file:</h3>
+        <div id="main">
+            ...
+        </div>
+    </div>
+</body>
+</html>
