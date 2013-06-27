@@ -1,0 +1,27 @@
+.grid .tick {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
+.grid path {
+    stroke-width: 2;
+}
+.axis path, .axis line {
+    fill: none;
+    stroke: #000000;
+    shape-rendering: crispEdges;
+}
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 3px;
+}
+
+.axis text {
+	font-family: sans-serif;
+	font-size: 11px;
+
+}
+
+.chart {
+background-color: grey; 
+}
